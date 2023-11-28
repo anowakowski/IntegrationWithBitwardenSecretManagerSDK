@@ -16,18 +16,19 @@ namespace IntegrationWithBitwardenSecretManagerSDK.Core
             var configuration = GetConfiguration();
             using (var bitwardenClient = new BitwardenClient())
             {
-
+                bitwardenClient.AccessTokenLogin(configuration.accessToken);
+                bitwardenClient.Projects.List(configuration.organizationId);
             }
         }
 
-        private (string accessToken, string organizationId) GetConfiguration()
+        private (string accessToken, Guid organizationId) GetConfiguration()
         {
             var section = _configuration.GetSection("BitwardenSM");
 
             if (section == null) throw new ArgumentException();
 
             var accessToken = section.GetSection("AccessToken").Value;
-            var organizationId = section.GetSection("OrganizationId").Value;
+            var organizationId = Guid.Parse(section.GetSection("OrganizationId").Value);
 
             return (accessToken, organizationId);
         }
