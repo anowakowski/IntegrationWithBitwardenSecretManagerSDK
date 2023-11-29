@@ -2,7 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-
 IConfigurationBuilder builder = new ConfigurationBuilder();
 builder
     .SetBasePath(Directory.GetCurrentDirectory())
