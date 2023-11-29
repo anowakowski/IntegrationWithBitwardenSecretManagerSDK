@@ -17,5 +17,8 @@ var serviceCollection = new ServiceCollection()
 
 var service = serviceCollection.GetService<IPrepareSecrets>();
 
-service.GetSecrets();
+Console.WriteLine(string.Concat("Your secret for Key API_KEY is: ", service.GetSecretValue("API_KEY", "test project")));
+
+Console.WriteLine("press any key to close");
+Console.ReadKey();
 

@@ -2,6 +2,6 @@
 {
     public interface IPrepareSecrets
     {
-        void GetSecrets();
+        string GetSecretValue(string secretName, string projectName);
     }
 }
